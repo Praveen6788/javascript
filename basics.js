@@ -96,3 +96,86 @@ console.log(firstname,lastname)
 person.email="abc@gmail.com"
 
 console.log(person.email)
+
+
+
+
+
+
+
+const todo =[
+    {
+        id : 0,
+        task:"send report",
+        iscompleted : true
+        
+    },
+    {
+        id : 1,
+        task:"print report",
+        iscompleted : false
+    },
+    {
+        id : 2,
+        task:"scan report",
+        iscompleted:true 
+    }
+
+]
+
+const todojson =JSON.stringify(todo) //used to convert js to json format
+console.log(todojson)
+
+
+
+// loops
+
+// for 
+
+for (let i =0;i<10;i++){
+    console.log(i)
+
+}
+
+// while
+
+let i =0
+while (i<10){
+    console.log(`this loop number :${i}`)
+    i++
+}
+
+
+for (let i=0 ;i <todo.length;i++){
+    console.log(`tod list :${todo[i].task}`)
+}
+
+for (let todo1 of todo){
+    console.log(todo1)
+}
+
+
+// for each,map,filter
+
+todo.forEach(function (todo){
+    console.log(todo.task)
+
+})
+
+const text =todo.map(function (todo1){
+    return todo1.task
+
+})
+
+console.log(text)
+
+
+const completed  =todo.filter(function (todo1){
+    return todo1.iscompleted===true
+
+}).map(function(todo1){
+    return todo1.task
+})
+
+
+console.log(completed)
