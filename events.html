@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .child{
+            background-color: red;
+            padding: 20px;
+            cursor: pointer;
+            margin: 20px;
+            border: solid 2px;
+        }
+        .parent{
+            background-color: rgb(182, 190, 151);
+            padding: 20px;
+            cursor: pointer;
+            margin: 20px;
+            border: solid 2px;
+        }
+        .grandparent{
+            display: flex;
+            background-color: rgb(157, 255, 0);
+            padding: 20px;
+            cursor: pointer;
+            margin: 20px;
+            border: solid 2px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn" onclick="add()">click me</button>
+
+
+
+    <div class="grandparent">
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+    </div>
+
+
+    <script>
+        const bn =document.getElementById("btn")
+        function add(){
+            
+
+            bn.style.background="red"
+            
+
+
+
+        }
+        bn.addEventListener('mouseenter',()=>{
+            bn.style.background="blue"
+
+        })
+        bn.addEventListener('mouseleave',()=>{
+            bn.style.background="yellow"
+        })
+
+
+        
+
+         //event bubbling
+
+
+        document.querySelector('.parent').addEventListener('click',e=>{
+            alert('the  parent clicked')
+            e.stopPropagation() //stop propagation is used to stop event handling
+        })
+        document.querySelector('.grandparent').addEventListener('click',e=>{
+            alert('the grand parent clicked')
+        })
+        document.querySelector('.child').addEventListener('click',e=>{
+            alert('the child clicked')
+        })
+    </script>
+</body>
+</html>
