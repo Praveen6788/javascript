@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASync js</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+        const posts =[{title:"one",body:"i am one"},{title:"two",body:"i am two"}]
+
+        
+        //callback functions take functions as attribute or parrametrs so that they can called inside a function and to maintain asynchronus of code
+         
+
+        function getpost(){
+            setTimeout(()=>{
+                out =''
+                posts.forEach((post)=>{
+                    out+=`<li>${post.body}</li>`
+                })
+                document.body.innerHTML=out
+
+            },3000)
+        }
+        
+
+
+        /*function creatpost(post,callback){
+            setTimeout(()=>{
+                posts.push(post)
+                callback()
+
+
+
+            },1000)
+
+
+
+        } */
+
+
+        //creatpost({title:"three",body:"i am three"},getpost)
+
+
+        //promise
+
+
+
+        function creatpost(post){
+            return new Promise ((resolve,reject) => {
+                setTimeout(()=>{
+                    posts.push(post)
+                    let err = false
+
+                    if (!err){
+                        resolve("suceesful")
+                    }else{
+                        reject("failed ra babu")
+                    }
+    
+    
+    
+                },2000)
+
+            })
+            
+
+
+
+        }
+
+        /*creatpost({title:"three",body:"i am three"})
+        .then(getpost)
+        .catch(err => console.log(err))*/
+
+        const promise1 = new Promise((resolve,reject)=>{
+
+            setTimeout(()=>
+            {
+                resolve("goodbye");
+                console.log()
+
+            },2000)
+        })
+
+        const promise3 = 10
+        const promise4 = Promise.resolve("hello world")
+
+        const k =fetch('https://jsonplaceholder.typicode.com/users').then(e=>e.json())
+
+
+
+        Promise.all([promise1,promise3,promise4,k]).then((e)=>{
+            console.log(e)
+        })
+        
+
+
+
+        // async functions and await
+
+
+        /*async function init(){
+
+            await creatpost({title:"three",body:"three body"})
+            getpost()
+        }
+
+       init()*/
+
+
+
+       
+
+
+       async function fetchusers(){
+        const res =await fetch('https://jsonplaceholder.typicode.com/users').then(e=>e.json())
+        console.log(res)
+
+       }
+
+       fetchusers()
+
+
+
+
+    </script>
+</body>
+</html>
