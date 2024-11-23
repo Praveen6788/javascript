@@ -24,7 +24,9 @@ arr.forEach(butt =>{
         }
         else{
             string+=e.target.innerHTML;
-            input.value+= string}
+            input.value= string}
+
+        console.log(e.target)
         
 
     }
